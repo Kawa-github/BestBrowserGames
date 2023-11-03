@@ -1,5 +1,7 @@
-const Register = () =>{
-    return (
+import { Link } from "react-router-dom"
+
+const RegisterPage = () =>{
+    return(
         <>
             <form>
                 <label>
@@ -43,12 +45,17 @@ const Register = () =>{
                 <input type="submit" value="Enviar" />
             </form>
             <div className="area-login">
-                <p>Já possui uma conta? <a href="#">Entre aqui</a></p>
+                <p>Já possui uma conta? 
+                    <Link to={"/login"}>
+                        <a>
+                            Entre aqui
+                        </a>
+                    </Link>
+                </p>
             </div>
         </>
-
-    );
+    )
 }
 
 
-export default Register
+export default RegisterPage

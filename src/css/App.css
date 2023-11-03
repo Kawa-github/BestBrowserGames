@@ -70,3 +70,12 @@ body {
 .area-register input[type="submit"]:active {
   background-color: #003d80;
 }
+
+.area-login {
+  margin-top: 10px;
+}
+
+.area-login a{
+  margin: 5px;
+  text-decoration: none;
+}

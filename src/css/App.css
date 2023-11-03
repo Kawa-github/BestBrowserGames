@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color-white: white;
+  --text-color-black: black;
+}
+
+body {
+  font-family: "Fira Code", monospace;
+  background-color: #181d23;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.header {
+  margin-top: 50px;
+  color: white;
+}
+
+.area-register {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 10px;
+  background-color: aliceblue;
+  border: 3px solid #003d80;
+  border-radius: 15px;
+  width: 500px;
+  height: 60vh;
+  padding: 7px;
+
+}
+
+.area-register label {
+  font-weight: bold;
+  display: block; 
+  margin-top: 10px;
+}
+
+.area-register input, select{
+  background-color: beige;
+  width: 70%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.area-register input[type="submit"] {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 70%;
+  margin-top: 10px;
+}
+
+.area-register input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.area-register input[type="submit"]:active {
+  background-color: #003d80;
+}

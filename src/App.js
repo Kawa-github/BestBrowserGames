@@ -1,18 +1,16 @@
 import './css/App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import Register from './components/Register';
 
 import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import GamePage from './pages/GamePage';
+
 
 function App() {
   return (
     <div className="App">
-      <div className='container'>
-        <Header />
-      <div className='area-register'>
+      <div>
         <BrowserRouter>
           <Routes>
               <Route path='/' element={<HomePage />}  >
@@ -22,6 +20,12 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
+      <div>
+      <BrowserRouter>
+          <Routes>
+             <Route path='/home' element={<GamePage />} />
+          </Routes>
+        </BrowserRouter>
       </div>
     </div>
   );

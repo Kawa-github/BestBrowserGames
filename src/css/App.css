@@ -5,16 +5,17 @@
 }
 
 :root {
+  --bg-principal: #181d23;
   --text-color-white: white;
   --text-color-black: black;
 }
 
 body {
   font-family: "Fira Code", monospace;
-  background-color: #181d23;
+  background-color: cadetblue;
 }
 
-.container {
+.container-register, .container-header, .container-login{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +28,7 @@ body {
   color: white;
 }
 
-.area-register {
+.card {
   display: flex;
   flex-direction: column;
   margin: 50px 10px;
@@ -40,20 +41,20 @@ body {
 
 }
 
-.area-register label {
+.card label {
   font-weight: bold;
   display: block; 
   margin-top: 10px;
 }
 
-.area-register input, select{
+.card input, select{
   background-color: beige;
   width: 70%;
   padding: 10px;
   margin-top: 5px;
 }
 
-.area-register input[type="submit"] {
+.card input[type="submit"]{
   background-color: #007BFF;
   color: #fff;
   border: none;
@@ -63,19 +64,63 @@ body {
   margin-top: 10px;
 }
 
-.area-register input[type="submit"]:hover {
+.card input[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-.area-register input[type="submit"]:active {
+.card input[type="submit"]:active {
   background-color: #003d80;
 }
 
-.area-login {
+.card-footer {
   margin-top: 10px;
 }
 
-.area-login a{
+.card-footer a{
   margin: 5px;
   text-decoration: none;
 }
+
+/*Header Home*/
+
+.container-nav {
+  background-color: var(--bg-principal);
+  color: #fff;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.itens-nav {
+  display: flex;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+li {
+  margin-right: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+a:hover {
+  border-bottom: 2px solid #fff;
+}
+
+/**/

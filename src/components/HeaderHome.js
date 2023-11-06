@@ -1,3 +1,5 @@
+
+// import { FaSearch } from "react-icons/fa";
 const HeaderHome = () =>{
     return(
         <>
@@ -6,6 +8,7 @@ const HeaderHome = () =>{
                 <div className="itens-nav">
                     <nav>
                         <ul>
+                            {/* <li><FaSearch />  </li> */}
                             <li><input type="text" placeholder="Busque seu game favorito" maxLength={25}/></li>
                         </ul>
                     </nav>

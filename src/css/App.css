@@ -1,4 +1,5 @@
-@import url("/src/css/CardRegister.css");
+@import url("/src/css/CardRegisterUser.css");
+@import url("/src/css/CardRegisterGame.css");
 @import url("/src/css/Home.css");
 
 * {
@@ -9,6 +10,7 @@
 
 :root {
   --bg-principal: #171E27;
+  --bg-white: #fff;
   --text-color-white: white;
   --text-color-black: black;
 }

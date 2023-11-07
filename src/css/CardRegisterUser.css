@@ -19,7 +19,7 @@
     border: 1px solid #003d80;
     border-radius: 15px;
     width: 500px;
-    height: 60vh;
+    height: 65vh;
     padding: 7px;
   
   }
@@ -59,10 +59,15 @@
     color: var(--text-color-white);
     margin-top: 10px;
   }
-  
+
   .card-footer a{
     color: var(--text-color-white);
-    margin: 5px;
+    margin: 7px;
+    text-decoration: none;
+  }
+ 
+  .card-footer a:hover{
+    color: #007BFF;
     text-decoration: none;
   }
 

@@ -3,6 +3,7 @@ import ApiUrl from "../axios/config"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
+import authServices from "../services/authServices"
 
 const LoginPage = () =>{
     const navigate = useNavigate()
@@ -11,33 +12,36 @@ const LoginPage = () =>{
     const [password, setPassword] = useState("")
     const [token, setToken] = useState(null)
     const [loading, setLoading] = useState(false)
+    // const [redirect, setRedirect] = useState(null)
 
-    const handleLogin = async (e) =>{
-        e.preventDefault()
-        setLoading(true)
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+      
+        try {
+          const response = await authServices.fecthData({
+            email: email, 
+            password: password, 
+          });
+      
+        //   console.log("dados", response.data);
+        
+        const apiToken = response.data.token;
 
-        try{
-            const response = await ApiUrl.post("/users/login",{
-                email,
-                password,
-            })
-            
-            const apiToken = response.data.token
-            
-            if(apiToken){
-                setToken(apiToken)
-                navigate("/home")
-            }
-        }catch(error){
-            setLoading(false)
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Login falhou! Verifique se o email ou a senha estão corretos.",
-            })
+        if (apiToken) {
+            authServices.setLoggedUser(response);
+            navigate("/home");
         }
-    }
-    
+        } catch (error) {
+          setLoading(false);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Login falhou! Verifique se o email ou a senha estão corretos.",
+          });
+        }
+      };
+      
     return(
         <>
             <Header />

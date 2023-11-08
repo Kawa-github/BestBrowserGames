@@ -1,5 +1,5 @@
 .container-nav {
-    background-color: var(--bg-principal);
+    background-color: var(--bg-main);
     color: #fff;
     padding: 10px 0;
     display: flex;
@@ -21,19 +21,44 @@
     padding: 5px;
   }
 
+  .itens-nav{
+    /* background-color: #0056b3; */
+    padding: 10px;
+  }
+
   ul {
     list-style: none;
     display: flex;
   }
   
   li {
-    margin-right: 20px;
+    margin: 10px;
     > input{
       width: 200px;
       padding: 8px;
       border: none;
       border-radius: 10px;
     }
+
+  }
+
+  .btn-logout{
+    background-color: var(--bg-secondary);
+    padding: 7px;
+    color: var(--text-color-white);
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 50px;
+
+    > :hover{
+      cursor: pointer;
+    }
+  }
+
+  .btn-logout:hover{
+    cursor: pointer;
+    background-color: #0056b3;
   }
   
   /**/
@@ -165,9 +190,7 @@
     }
   }
   
-  
   .top-card {
-    background-color: var(--cor-texto);
     height: 300px;
     width: 100%;
     border-radius: 15px;
@@ -182,7 +205,6 @@
   
   .txt-card {
     text-align: center;
-    color: var(--cor-texto);
     font-weight: 500;
     height: 50px;
   }

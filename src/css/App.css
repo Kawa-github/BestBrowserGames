@@ -9,7 +9,8 @@
 }
 
 :root {
-  --bg-principal: #171E27;
+  --bg-main: #171E27;
+  --bg-secondary: #007bff;
   --bg-white: #fff;
   --text-color-white: white;
   --text-color-black: black;

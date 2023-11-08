@@ -10,9 +10,19 @@ import bgRpg from "../img/categorias/rpg.jpg"
 import bgEsportes from "../img/categorias/esportes.jpg"
 import bgAcao from "../img/categorias/acao.jpg"
 import bgAventura from "../img/categorias/aventura.jpg"
+import authServices from "../services/authServices"
+import { useNavigate } from "react-router-dom"
+
+
 
 const GamePage = () =>{
-    return(
+  const navigate = useNavigate()
+
+  const user = authServices.getLoggedUser()
+  
+  if(!user) navigate("/login");
+  
+  return(
         <>
         <HeaderHome />
         <div className="container-categoria">

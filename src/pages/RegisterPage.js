@@ -2,39 +2,39 @@ import { Link} from "react-router-dom"
 import Header from "../components/Header"
 import { useNavigate } from "react-router-dom"
 import ApiUrl from "../axios/config"
+import { useState } from "react"
+import authServices from "../services/authServices"
 
 const RegisterPage = () => {
-    const navigate = useNavigate()  
-    const handleSubmit = async (event) => {
-      event.preventDefault()
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [birthDate, setbirthDate] = useState("")
+  const [state, setState] = useState("")
+  const [country, setCountry] = useState("")
   
-      const nome = event.target.name.value
-      const email = event.target.email.value
-      const senha = event.target.password.value
-      const senhaConfirma = event.target.confirmPassword.value
-      const dataNascimento = event.target.birthDate.value
-      const estado = event.target.state.value
-      const pais = event.target.country.value
-  
-      const userData = {
-        name: nome,
-        email: email,
-        password: senha,
-        confirmPassword: senhaConfirma,
-        birthDate: dataNascimento,
-        country: pais,
-        state: estado,
-      }
-  
+  const navigate = useNavigate()  
+
+    const handleSubmit = async (e) => {
+      e.preventDefault()
+      
       try {
-        const response = await ApiUrl.post('/users', userData)
+        const response = await authServices.insertData({
+          name: name,
+          email: email,
+          password: password,
+          confirmPassword: confirmPassword,
+          birthDate: birthDate,
+          state: state,
+          country: country,
+        })
   
         if (response.status === 201) {
           console.log('Usuário registrado com sucesso')
+          authServices.setLoggedUser(response)
           navigate("/home")
-        } else {
-          console.error('Erro ao registrar o usuário')
-        }
+        } 
       } catch (error) {
         console.error('Erro ao registrar o usuário', error)
       }
@@ -54,6 +54,7 @@ const RegisterPage = () => {
             name="name"
             maxLength={40}
             required
+            onChange={(e) => setName(e.target.value)}
           />
 
           <label>
@@ -62,6 +63,7 @@ const RegisterPage = () => {
           <input
             type="email"
             name="email"
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <label>
@@ -71,6 +73,7 @@ const RegisterPage = () => {
             type="password"
             name="password"
             maxLength={15}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <label>
@@ -80,6 +83,7 @@ const RegisterPage = () => {
             type="password"
             name="confirmPassword"
             maxLength={15}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
           <label>
@@ -88,6 +92,7 @@ const RegisterPage = () => {
           <input
             type="date"
             name="birthDate"
+            onChange={(e) => setbirthDate(e.target.value)}
           />
 
           <label>
@@ -95,6 +100,7 @@ const RegisterPage = () => {
           </label>
           <select
             name="state"
+            onChange={(e) => setState(e.target.value)}
           >
             <option value="SP">São Paulo</option>
             <option value="MG">Minas Gerais</option>
@@ -107,6 +113,7 @@ const RegisterPage = () => {
           </label>
           <select
             name="country"
+            onChange={(e) => setCountry(e.target.value)}
           >
             <option value="BR">Brasil</option>
             <option value="ARG">Argentina</option>

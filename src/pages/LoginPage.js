@@ -12,7 +12,6 @@ const LoginPage = () =>{
     const [password, setPassword] = useState("")
     const [token, setToken] = useState(null)
     const [loading, setLoading] = useState(false)
-    // const [redirect, setRedirect] = useState(null)
 
     const handleLogin = async (e) => {
         e.preventDefault();

@@ -1,5 +1,9 @@
 import ApiUrl from "../axios/config"
 
+const insertData = (data) => {
+  return ApiUrl.post("/users", data)
+}
+
 const fecthData = (data) => {
   return ApiUrl.post("/users/login", data)
 }
@@ -21,4 +25,4 @@ const getLoggedUser = () => {
   }
 }
 
-export default { fecthData, setLoggedUser, getLoggedUser }
+export default { insertData, fecthData, setLoggedUser, getLoggedUser }

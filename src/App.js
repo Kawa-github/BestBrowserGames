@@ -6,6 +6,7 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import GamePage from './pages/GamePage';
 import NewGamePage from './pages/NewGamePage';
+import CategoryPage from './pages/CategoryPage';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                 <Route index element={<RegisterPage />}/>
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/home' element={<GamePage />} />
+                <Route path='/category' element={<CategoryPage />} />
                 <Route path='/newGame' element={<NewGamePage />} />
               </Route>
           </Routes>

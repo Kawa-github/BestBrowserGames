@@ -18,6 +18,7 @@ const getLoggedUser = () => {
   if (!userData) return null
   try {
     let parsedData = JSON.parse(userData)
+    console.log(parsedData.token)
     return parsedData
   } catch (error) {
     console.log(error)

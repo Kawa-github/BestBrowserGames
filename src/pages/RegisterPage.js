@@ -17,10 +17,9 @@ const RegisterPage = () => {
       state: '',
       country: '',
     })
-    
+
     const handleSubmit = async (e) => {
       e.preventDefault()
-
 
       const isEmptyField = Object.values(formData).some((value) => value.trim() === '');
 

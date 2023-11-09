@@ -26,6 +26,7 @@ const LoginPage = () =>{
         //   console.log("dados", response.data);
         
         const apiToken = response.data.token;
+        setToken(apiToken)
 
         if (apiToken) {
             authServices.setLoggedUser(response);

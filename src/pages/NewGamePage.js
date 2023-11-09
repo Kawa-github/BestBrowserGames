@@ -15,9 +15,23 @@ const NewGamePage = () => {
     const createGame = async (e) =>{
         e.preventDefault()
         
+        let userData = localStorage.getItem("user")
+        let user = JSON.parse(userData)
+        console.log(user.token)
+        
         try{
-            const game = {name,category,description,url,img}
-            const response = await ApiFetch.post("/games", game)
+            const game = {
+                name,
+                category,
+                description,
+                url,
+                img
+            }
+            const response = await ApiFetch.post("/games", game, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
 
             if(response.status == 201){
                 console.log("Game cadastrado com sucesso")
@@ -37,7 +51,7 @@ const NewGamePage = () => {
         <HeaderHome/>
         <div className="container-cadastro">
             <div className="form-cadastro-game">
-                <h2>Formulário de Cadastro de Jogo</h2>
+                <h2>Cadastre seu BrowserGame</h2>
                 <form onSubmit={(e) => createGame(e)}>
                     <div className="form-group">
                         <label htmlFor="name" className="form-label">Nome:</label>
@@ -63,7 +77,7 @@ const NewGamePage = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="url" className="form-label">URL de Acesso ao Jogo:</label>
+                        <label htmlFor="url" className="form-label">Url do jogo:</label>
                         <input 
                             type="url" 
                             id="url" 

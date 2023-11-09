@@ -1,34 +1,40 @@
 import { Link} from "react-router-dom"
 import Header from "../components/Header"
 import { useNavigate } from "react-router-dom"
-import ApiUrl from "../axios/config"
 import { useState } from "react"
 import authServices from "../services/authServices"
+import Swal from "sweetalert2"
 
 const RegisterPage = () => {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [birthDate, setbirthDate] = useState("")
-  const [state, setState] = useState("")
-  const [country, setCountry] = useState("")
-  
   const navigate = useNavigate()  
 
+  const [formData, setFormData] = useState({ 
+      name: '', 
+      email: '', 
+      password: '',
+      confirmPassword: '',
+      birthDate: '',
+      state: '',
+      country: '',
+    })
+    
     const handleSubmit = async (e) => {
       e.preventDefault()
+
+
+      const isEmptyField = Object.values(formData).some((value) => value.trim() === '');
+
+      if (isEmptyField) {
+        Swal.fire({
+          icon: "warning",
+          title: "Atenção!",
+          text: "Preencha todos os campos!",
+        });
+        return;
+      }
       
       try {
-        const response = await authServices.insertData({
-          name: name,
-          email: email,
-          password: password,
-          confirmPassword: confirmPassword,
-          birthDate: birthDate,
-          state: state,
-          country: country,
-        })
+        const response = await authServices.insertData(formData)
   
         if (response.status === 201) {
           console.log('Usuário registrado com sucesso')
@@ -40,67 +46,68 @@ const RegisterPage = () => {
       }
     }
 
+    const handleInputChange = (e) =>{
+      const { name, value } = e.target;
+      setFormData((prevData) => ({ ...prevData, [name]: value}));
+    }
 
   return (
     <div className="container-register">
       <Header />
       <div className="card">
         <form onSubmit={handleSubmit}>
-          <label>
-            Nome:
-          </label>
+          <label>Nome:</label>
           <input
             type="text"
             name="name"
             maxLength={40}
+            value={formData.name}
+            onChange={handleInputChange}
             required
-            onChange={(e) => setName(e.target.value)}
           />
 
-          <label>
-            Email:
-          </label>
+          <label>Email:</label>
           <input
             type="email"
             name="email"
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={handleInputChange}
+            required
           />
 
-          <label>
-            Senha:
-          </label>
+          <label>Senha:</label>
           <input
             type="password"
             name="password"
             maxLength={15}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={handleInputChange}
+            required
           />
 
-          <label>
-            Confirme a senha:
-          </label>
+          <label>Confirme a senha:</label>
           <input
             type="password"
             name="confirmPassword"
             maxLength={15}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+            required
           />
 
-          <label>
-            Data de Nascimento:
-          </label>
+          <label>Data de Nascimento:</label>
           <input
             type="date"
             name="birthDate"
-            onChange={(e) => setbirthDate(e.target.value)}
+            value={formData.birthDate}
+            onChange={handleInputChange}
           />
 
-          <label>
-            Estado:
-          </label>
+          <label>Estado:</label>
           <select
             name="state"
-            onChange={(e) => setState(e.target.value)}
+            value={formData.state}
+            onChange={handleInputChange}
           >
             <option value="SP">São Paulo</option>
             <option value="MG">Minas Gerais</option>
@@ -113,10 +120,10 @@ const RegisterPage = () => {
           </label>
           <select
             name="country"
-            onChange={(e) => setCountry(e.target.value)}
+            value={formData.country}
+            onChange={handleInputChange}
           >
             <option value="BR">Brasil</option>
-            <option value="ARG">Argentina</option>
           </select>
 
           <input type="submit" value="Enviar" />

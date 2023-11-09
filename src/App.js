@@ -7,7 +7,7 @@ import LoginPage from './pages/LoginPage';
 import GamePage from './pages/GamePage';
 import NewGamePage from './pages/NewGamePage';
 import CategoryPage from './pages/CategoryPage';
-
+import CategoryGamePage from './pages/CategoryGamePage';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/home' element={<GamePage />} />
                 <Route path='/category' element={<CategoryPage />} />
+                <Route path='/category/:id' element={<CategoryGamePage />} />
                 <Route path='/newGame' element={<NewGamePage />} />
               </Route>
           </Routes>

@@ -42,8 +42,6 @@ const NewGamePage = () => {
         }catch(error){
             console.error('Erro:', error)
         }
-        
-
     }
 
     return (

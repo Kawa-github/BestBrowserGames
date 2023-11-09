@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import ApiUrl from "../axios/config"
+import { Link } from "react-router-dom"
 import bgEstrategia from "../img/categorias/estrategia.jpg"
 import bgTiro from "../img/categorias/tiro.jpg"
 import bgArcade from "../img/categorias/arcade.jpg"
@@ -7,7 +8,6 @@ import bgRpg from "../img/categorias/rpg.jpg"
 import bgEsportes from "../img/categorias/esportes.jpg"
 import bgAcao from "../img/categorias/acao.jpg"
 import bgAventura from "../img/categorias/aventura.jpg"
-
 
 const Category = () =>{
     const [categories, setCategories] = useState([])
@@ -24,7 +24,7 @@ const Category = () =>{
         
         fetchData()
       }, [])
-      
+
       const getImageByCategory = (categoryName) => {
         switch (categoryName.toLowerCase()) {
           case "estratégia":
@@ -48,17 +48,19 @@ const Category = () =>{
 
   return (
     <>
-         <div className="container-categoria">
-          <div className="cards-categoria">
-            {categories.map((category) => (
-              <div className="card-categoria" key={category.id}>
-                 <div className="card-background" style={{ backgroundImage: `url(${getImageByCategory(category.name)})` }}>
-                  <p>{category.name}</p>
+        <div className="container-categoria">
+        <div className="cards-categoria">
+          {categories.map((category) => (
+            <Link to={`/categories/${category._id}`} key={category._id}>
+              <div className="card-categoria">
+                <div className="card-background" style={{backgroundImage: `url(${getImageByCategory(category.name)})`, }}>
+                    <p>{category.name}</p>
                 </div>
               </div>
-            ))}
-          </div>
+            </Link>
+          ))}
         </div>
+      </div>
     </>
   )
 

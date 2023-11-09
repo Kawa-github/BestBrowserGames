@@ -14,8 +14,8 @@ const LoginPage = () =>{
     const [loading, setLoading] = useState(false)
 
     const handleLogin = async (e) => {
-        e.preventDefault();
-        setLoading(true);
+        e.preventDefault()
+        setLoading(true)
       
         try {
           const response = await authServices.fecthData({

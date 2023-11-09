@@ -1,20 +1,17 @@
 import HeaderHome from "../components/HeaderHome"
 import Category from "../components/Category"
 import ApiUrl from "../axios/config"
-
 import Img1 from "../img/the_last_of_us_game_capa.jpg"
 import Img2 from "../img/readead.jpg"
-
-
 import authServices from "../services/authServices"
 import { useNavigate } from "react-router-dom"
 
 const GamePage = () =>{
+  
   const navigate = useNavigate()
   const user = authServices.getLoggedUser()
-    
-
   if(!user) navigate("/login");
+
   return(
         <>
         <HeaderHome />

@@ -11,10 +11,15 @@ const CategoryPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+
+    let userData = localStorage.getItem("user")
+    let user = JSON.parse(userData)
+    console.log(user.token)
+
     try {
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGMyYTgzNzQyOGFmZDJjMWYxODYwOSIsIm5hbWUiOiJrYXdhLWFkbSIsImVtYWlsIjoia2F3YXJAZ21haWwuY29tIiwiYmlydGhEYXRlIjoiMjAwMy0wMS0wMVQwMDowMDowMC4wMDBaIiwiY291bnRyeSI6IiIsInN0YXRlIjoiIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNjk5NTU1NzYwLCJleHAiOjE2OTk2NDIxNjB9.7wZhHQawE74lrQ1ZcJyDpssYmiwzIzBwB7LcTygISeQ"
+      // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGMyYTgzNzQyOGFmZDJjMWYxODYwOSIsIm5hbWUiOiJrYXdhLWFkbSIsImVtYWlsIjoia2F3YXJAZ21haWwuY29tIiwiYmlydGhEYXRlIjoiMjAwMy0wMS0wMVQwMDowMDowMC4wMDBaIiwiY291bnRyeSI6IiIsInN0YXRlIjoiIiwicm9sZXMiOlsiYWRtaW4iXSwiaWF0IjoxNjk5NTU1NzYwLCJleHAiOjE2OTk2NDIxNjB9.7wZhHQawE74lrQ1ZcJyDpssYmiwzIzBwB7LcTygISeQ"
     //   const decoded = jwtDecode(token)
-      const headers = { Authorization: `Bearer ${token}` }
+      const headers = { Authorization: `Bearer ${user.token}` }
 
       const response = await ApiUrl.post(
         "/categories",

@@ -1,54 +1,57 @@
-import HeaderHome from "../components/HeaderHome"
-import Category from "../components/Category"
-import ApiUrl from "../axios/config"
-import Img1 from "../img/the_last_of_us_game_capa.jpg"
-import Img2 from "../img/readead.jpg"
-import authServices from "../services/authServices"
-import { useNavigate } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import ApiUrl from "../axios/config";
+import HeaderHome from "../components/HeaderHome";
+import Category from "../components/Category";
 
-const GamePage = () =>{
-  
-  const navigate = useNavigate()
-  const user = authServices.getLoggedUser()
-  if(!user) navigate("/login");
+const GamePage = () => {
+  const [games, setGames] = useState([]);
+  const navigate = useNavigate();
 
-  return(
-        <>
-        <HeaderHome />
-        <Category />
-        
-        <div className="container-games">
-          <div className="txt-games">
-            <h1>Os Melhores games do mercado.</h1>
-            <h3>Avalie agora!</h3>
-          </div>
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const { data } = await ApiUrl.get("/games");
+        setGames(data);
+      } catch (error) {
+        console.log("Erro ao buscar game!", error);
+      }
+    }
 
-          <div className="card-games">
-            <div className="card">
+    fetchData();
+  }, []);
+
+  // const user = authServices.getLoggedUser()
+  // if (!user) navigate("/login");
+
+  return (
+    <>
+      <HeaderHome />
+      <Category />
+
+      <div className="container-games">
+        <div className="txt-games">
+          <h1>Os Melhores games do mercado.</h1>
+          <h3>Avalie agora!</h3>
+        </div>
+
+        <div className="card-games">
+          {games.map((game) => (
+            <div className="card" key={game.id}>
               <div className="top-card">
-                <img src={Img1} alt="" />
+                <img src={game.imageURL} title={game.description} />
+                <p className="txt-card">{game.name}</p>
               </div>
-              <p className="txt-card">The Last Of Us</p>
               <div className="bottom-card">
                 <h3>User</h3>
                 <h3>Estrelas: 5</h3>
               </div>
             </div>
-            <div className="card">
-              <div className="top-card">
-                <img src={Img2} alt="" />
-              </div>
-              <p className="txt-card">Read Dead Redemption</p>
-              <div className="bottom-card">
-                  <h3>User</h3>
-                  <h3>Estrelas: 5</h3>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-        </>
-    )
-}
+      </div>
+    </>
+  );
+};
 
-
-export default GamePage
+export default GamePage;

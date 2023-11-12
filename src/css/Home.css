@@ -158,7 +158,6 @@
   }
 
   /**/
-
   /*SubHeader Categoria*/
   .container-categoria {
     display: flex;
@@ -267,8 +266,8 @@
     width: 100%;
     
     > .card {
-      width: 350px;
-      height: 300px;
+      width: 280px;
+      height: 380px;
       border-radius: 20px;
       margin: 20px;
       display: flex;
@@ -282,19 +281,14 @@
     > .card:hover,
     > .card:focus {
       transform: scale(1.02);
-      transition: transform 0.7s;
+      /* transition: transform 0.7s; */
+      cursor: pointer;
     }
   }
-  
-  .top-card {
-    height: 300px;
-    width: 100%;
-    border-radius: 15px;
-  }
-  
+
   .top-card img {
     width: 100%;
-    height: 100%;
+    height: 80%;
     object-fit: cover;
     border-radius: 15px;
   }
@@ -303,7 +297,11 @@
     text-align: center;
     font-weight: 500;
     height: 50px;
+    margin-bottom: 9px;
+    font-size: 13px;
   }
+
+
   
   .bottom-card {
     display: flex;

@@ -1,16 +1,17 @@
 import HeaderHome from "../components/HeaderHome"
 import ApiFetch from "../axios/config"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const NewGamePage = () => {
     const navigate = useNavigate()
 
-    const [name, setName] = useState()
-    const [category, setCategory] = useState()
-    const [url, setUrl] = useState()
-    const [description, setDescription] = useState()
-    const [img, setImg] = useState()
+    const [name, setName] = useState("")
+    const [category, setCategory] = useState([])
+    const [url, setUrl] = useState("")
+    const [description, setDescription] = useState("")
+    const [imageURL, setImg] = useState("")
+    // const [categories, setCategories] = useState([]);
 
     const createGame = async (e) =>{
         e.preventDefault()
@@ -25,8 +26,10 @@ const NewGamePage = () => {
                 category,
                 description,
                 url,
-                img
+                imageURL
             }
+
+            console.log(game)
             const response = await ApiFetch.post("/games", game, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
@@ -75,7 +78,7 @@ const NewGamePage = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="url" className="form-label">Url do jogo:</label>
+                        <label htmlFor="url" className="form-label">Link do jogo:</label>
                         <input 
                             type="url" 
                             id="url" 
@@ -105,7 +108,7 @@ const NewGamePage = () => {
                     <div className="form-group">
                         <label htmlFor="imageURL" className="form-label">Imagem Ilustrativa:</label>
                         <input 
-                            type="file" 
+                            type="url" 
                             id="imageURL" 
                             name="imageURL" 
                             className="form-input" 
@@ -115,7 +118,7 @@ const NewGamePage = () => {
                             />
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="form-button">Cadastrar Jogo</button>
+                        <button type="submit" className="btn-cadastro">Cadastrar Jogo</button>
                     </div>
                 </form>
             </div>

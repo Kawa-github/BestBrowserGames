@@ -11,7 +11,21 @@ const NewGamePage = () => {
     const [url, setUrl] = useState("")
     const [description, setDescription] = useState("")
     const [imageURL, setImg] = useState("")
-    // const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([])
+
+
+    useEffect(() => {
+        async function fetchCategories() {
+          try {
+            const response = await ApiFetch.get("/categories")
+            setCategories(response.data)
+          } catch (error) {
+            console.error("Error ao buscar categorias:", error)
+          }
+        }
+    
+        fetchCategories();
+      }, []);
 
     const createGame = async (e) =>{
         e.preventDefault()
@@ -23,7 +37,7 @@ const NewGamePage = () => {
         try{
             const game = {
                 name,
-                category,
+                category: { _id: category },
                 description,
                 url,
                 imageURL
@@ -37,7 +51,7 @@ const NewGamePage = () => {
             })
 
             if(response.status == 201){
-                console.log("Game cadastrado com sucesso")
+                alert("Game cadastrado com sucesso")
                 navigate("/home")
             }else{
                 console.log("Erro ao cadastrar")
@@ -68,13 +82,15 @@ const NewGamePage = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="category" className="form-label">Categoria:</label>
-                        <select name="category" onChange={(e) => setCategory(e.target.value)}>
-                            <option value="estrategia">Estratégia</option>
-                            <option value="tiro">Tiro</option>
-                            <option value="arcade">Arcade</option>
-                            <option value="esportes">esportes</option>
-                            <option value="acao">Ação</option>
-                            <option value="aventura">Aventura</option>  
+                        <select
+                            name="category"
+                            onChange={(e) => setCategory(e.target.value)}
+                        >
+                            {categories.map((cat) => (
+                            <option key={cat._id} value={cat._id}>
+                                {cat.name}
+                            </option>
+                            ))}
                         </select>
                     </div>
                     <div className="form-group">
@@ -106,7 +122,7 @@ const NewGamePage = () => {
                         </textarea>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="imageURL" className="form-label">Imagem Ilustrativa:</label>
+                        <label htmlFor="imageURL" className="form-label">Imagem Ilustrativa (url):</label>
                         <input 
                             type="url" 
                             id="imageURL" 

@@ -280,15 +280,15 @@
     
     > .card:hover,
     > .card:focus {
-      transform: scale(1.02);
+      /* transform: scale(1.02); */
       /* transition: transform 0.7s; */
-      cursor: pointer;
+      /* cursor: pointer; */
     }
   }
 
   .top-card img {
     width: 100%;
-    height: 80%;
+    height: 260px;
     object-fit: cover;
     border-radius: 15px;
   }

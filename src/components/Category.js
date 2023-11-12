@@ -9,6 +9,7 @@ import bgEsportes from "../img/categorias/esportes.jpg"
 import bgAcao from "../img/categorias/acao.jpg"
 import bgAventura from "../img/categorias/aventura.jpg"
 
+
 const Category = () =>{
     const [categories, setCategories] = useState([])
 

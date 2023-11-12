@@ -151,6 +151,7 @@
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
+    transition: background-color 0.3s ease;
   }
 
   .category-form button:hover {
@@ -158,6 +159,36 @@
   }
 
   /**/
+
+  /*Page Edit Delete Category*/
+
+  .area-buttons{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .area-buttons button{
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px;
+    margin: 5px;
+  }
+
+  #btn-delete{
+    background-color: red;
+  }
+
+  #btn-delete:hover{
+    background-color: #8B0000; 
+  }
+
+
+
+  /**/
+  
   /*SubHeader Categoria*/
   .container-categoria {
     display: flex;
@@ -282,7 +313,7 @@
     > .card:focus {
       /* transform: scale(1.02); */
       /* transition: transform 0.7s; */
-      /* cursor: pointer; */
+      cursor: pointer;
     }
   }
 

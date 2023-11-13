@@ -26,7 +26,7 @@ const GamePage = () => {
 
   return (
     <>
-      <HeaderHome />
+      <HeaderHome title="BestBrowserGames"/>
       <Category />
 
       <div className="container-games">

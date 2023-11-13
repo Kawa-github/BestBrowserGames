@@ -3,8 +3,7 @@ import { useEffect, useState } from "react"
 import authServices from "../services/authServices"
 import PropTypes from "prop-types";
 
-
-const HeaderHome = ( {onLogout} ) =>{
+const HeaderHome = (props) =>{
     const [userName, setUserName] = useState("")
 
     useEffect(() => {
@@ -15,16 +14,15 @@ const HeaderHome = ( {onLogout} ) =>{
         }
     }, [])
 
-    const handleLogout = () =>{
+    const HandleLogout = () =>{
         localStorage.clear()
-        onLogout()
     }
     
     return(
         <>
             <div className="container-nav">
                 <div className="menu-nav">
-                    <div className="title">BestBrowserGames</div>
+                    <div className="title">{props.title}</div>
                     <nav>
                         <ul>
                             <li>
@@ -51,7 +49,7 @@ const HeaderHome = ( {onLogout} ) =>{
                         <Link to={"/"}>
                             <button
                                 className="btn-logout"
-                                onClick={handleLogout}
+                                onClick={(e) => HandleLogout(e.target)}
                             >
                                 Sair
                             </button>
@@ -63,9 +61,8 @@ const HeaderHome = ( {onLogout} ) =>{
     )
 }
 
-
 HeaderHome.propTypes = {
-    onLogout: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
 }
 
 

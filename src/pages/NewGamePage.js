@@ -63,7 +63,7 @@ const NewGamePage = () => {
 
     return (
         <>
-        <HeaderHome/>
+        <HeaderHome title="BestBrowserGames"/>
         <div className="container-cadastro">
             <div className="form-cadastro-game">
                 <h2>Cadastre seu BrowserGame</h2>

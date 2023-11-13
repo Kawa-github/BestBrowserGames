@@ -76,7 +76,7 @@ const CategoryGamePage = () => {
 
   return (
     <>
-      <HeaderHome />
+      <HeaderHome title="BestBrowserGames"/>
       <div className="container-form-categoria">
         <div>
           <form className="category-form" onSubmit={handleEdit}>

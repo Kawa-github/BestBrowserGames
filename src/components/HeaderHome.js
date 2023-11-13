@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import authServices from "../services/authServices"
+import PropTypes from "prop-types";
 
-const HeaderHome = () =>{
+
+const HeaderHome = ( {onLogout} ) =>{
     const [userName, setUserName] = useState("")
 
     useEffect(() => {
@@ -13,8 +15,9 @@ const HeaderHome = () =>{
         }
     }, [])
 
-    const logout = () =>{
+    const handleLogout = () =>{
         localStorage.clear()
+        onLogout()
     }
     
     return(
@@ -48,7 +51,7 @@ const HeaderHome = () =>{
                         <Link to={"/"}>
                             <button
                                 className="btn-logout"
-                                onClick={(e) => logout(e.target)}
+                                onClick={handleLogout}
                             >
                                 Sair
                             </button>
@@ -58,6 +61,11 @@ const HeaderHome = () =>{
             </div>
         </>
     )
+}
+
+
+HeaderHome.propTypes = {
+    onLogout: PropTypes.func.isRequired,
 }
 
 

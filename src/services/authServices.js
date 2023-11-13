@@ -8,6 +8,10 @@ const fecthData = (data) => {
   return ApiUrl.post("/users/login", data)
 }
 
+const updateUserData = (userId, data) => {
+  return ApiUrl.put(`/users/${userId}`, data);
+}
+
 const setLoggedUser = (response) => {
   let userData = JSON.stringify(response.data)
   localStorage.setItem("user", userData)
@@ -26,4 +30,4 @@ const getLoggedUser = () => {
   }
 }
 
-export default { insertData, fecthData, setLoggedUser, getLoggedUser }
+export default { insertData, fecthData, updateUserData, setLoggedUser, getLoggedUser }

@@ -1,4 +1,4 @@
-.container-register, .container-header, .container-login{
+.container-register, .container-header, .container-login, .container-edit-user{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,26 +18,42 @@
     background-color: var(--bg-main);
     border: 1px solid #003d80;
     border-radius: 15px;
+    width: 510px;
+    height: 65vh;
+    padding: 7px;  
+  }
+
+  .card-edit{
+    display: flex;
+    flex-direction: column;
+    margin: 90px 10px;
+    background-color: var(--bg-main);
+    border: 1px solid #003d80;
+    border-radius: 15px;
     width: 500px;
     height: 65vh;
     padding: 7px;
-  
+
   }
   
-  .card label {
+  .card label, .card-edit label {
     font-weight: bold;
     display: block; 
     margin-top: 10px;
     color: var(--text-color-white);
   }
   
-  .card input, select{
+  .card input,
+  .card-edit input,
+  .card select,
+  .card-edit select {
     width: 70%;
     padding: 10px;
     margin-top: 5px;
   }
-  
-  .card input[type="submit"]{
+
+  .card input[type="submit"],
+  .card-edit input[type="submit"] {
     background-color: #007BFF;
     color: #fff;
     border: none;
@@ -46,12 +62,14 @@
     width: 70%;
     margin-top: 10px;
   }
-  
-  .card input[type="submit"]:hover {
+
+  .card input[type="submit"]:hover,
+  .card-edit input[type="submit"]:hover {
     background-color: #0056b3;
   }
-  
-  .card input[type="submit"]:active {
+
+  .card input[type="submit"]:active,
+  .card-edit input[type="submit"]:active {
     background-color: #003d80;
   }
   

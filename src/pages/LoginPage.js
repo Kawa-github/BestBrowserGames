@@ -22,8 +22,9 @@ const LoginPage = () =>{
             email: email, 
             password: password, 
           });
+
       
-        //   console.log("dados", response.data);
+          console.log("dados", response.data);
         
         const apiToken = response.data.token;
         setToken(apiToken)

@@ -11,6 +11,7 @@ const NewGamePage = () => {
     const [url, setUrl] = useState("")
     const [description, setDescription] = useState("")
     const [imageURL, setImg] = useState("")
+    const [videoURL, setVideoUrl] = useState("")
     const [categories, setCategories] = useState([])
 
 
@@ -40,7 +41,8 @@ const NewGamePage = () => {
                 category: { _id: category },
                 description,
                 url,
-                imageURL
+                imageURL,
+                videoURL
             }
 
             console.log(game)
@@ -81,11 +83,12 @@ const NewGamePage = () => {
                             />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="category" className="form-label">Categoria:</label>
+                        <label htmlFor="category" className="form-label">Gênero do jogo:</label>
                         <select
                             name="category"
                             onChange={(e) => setCategory(e.target.value)}
-                        >
+                            id="select-genero"
+                             >
                             {categories.map((cat) => (
                             <option key={cat._id} value={cat._id}>
                                 {cat.name}
@@ -105,10 +108,17 @@ const NewGamePage = () => {
                             onChange={(e) => setUrl(e.target.value)}
                             />
                     </div>
-                    {/* <div className="form-group">
-                        <label htmlFor="url-video" className="form-label">URL do Vídeo de Demonstração:</label>
-                        <input type="text" id="url-video" name="url-video" className="form-input" placeholder="URL do Vídeo (Opcional)" />
-                    </div> */}
+                    <div className="form-group">
+                        <label htmlFor="videoURL" className="form-label">URL do Vídeo de Demonstração:</label>
+                        <input 
+                            type="url" 
+                            id="videoURL" 
+                            name="videoURL" 
+                            className="form-input" 
+                            placeholder="URL do Vídeo (Opcional)" 
+                            onChange={(e) => setVideoUrl(e.target.value)}
+                            />
+                    </div>
                     <div className="form-group">
                         <label htmlFor="description" className="form-label">Descrição:</label>
                         <textarea 
@@ -128,7 +138,7 @@ const NewGamePage = () => {
                             id="imageURL" 
                             name="imageURL" 
                             className="form-input" 
-                            accept="image/*" 
+                            placeholder="Url da Imagem"
                             required 
                             onChange={(e) => setImg(e.target.value)}
                             />

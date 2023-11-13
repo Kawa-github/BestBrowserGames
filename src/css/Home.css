@@ -308,12 +308,17 @@
       background-color: #263241;
       color: var(--text-color-white)
     }
+
+    > .card a{
+      text-decoration: none;
+      color: var(--text-color-white);
+    }
     
     > .card:hover,
     > .card:focus {
-      /* transform: scale(1.02); */
+      transform: scale(1.02);
       /* transition: transform 0.7s; */
-      cursor: pointer;
+      /* cursor: pointer; */
     }
   }
 
@@ -342,3 +347,95 @@
     width: 100%;
     margin: 5px;
   }
+
+
+
+  /*Page Details Game*/
+  .container-game {
+    display: flex;
+    flex-direction: column;
+    margin: 120px 50px;
+    justify-content: space-between;
+  }
+  
+  .top-game {
+    margin: 5px 0px 2px 140px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .top-game img {
+    width: 180px;
+    height: 100px;
+  }
+  
+  .top-game p {
+    margin: 35px 0px 5px 15px;
+    color: var(--text-color-white);
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: #000 2px 3px 2px;
+  }
+  
+  .main-game {
+    margin: 35px 10px 5px 140px;
+  }
+  
+  .area-assessment {
+    display: flex;
+  }
+  
+  iframe {
+    width: 680px;
+    height: 380px;
+  }
+  
+  .aside-game {
+    margin-left: 150px;
+    background-color: #263241;
+    width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  .stars{
+    padding-top: 35px;
+    color: var(--text-color-white);
+    font-weight: bold;
+  }
+
+  .stars h3{
+    font-size: 20px;
+  }
+
+  .stars p{
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .about-game {
+    margin-top: 35px;
+    padding: 10px;
+  }
+  
+  .about-game h3 {
+    font-weight: bold;
+    color: var(--text-color-white);
+  }
+  
+  .about-game p {
+    margin-top: 10px;
+    color: #96a6b7;
+  }
+  
+  .about-game hr {
+    width: 40%;
+    margin-top: 20px;
+    color: #263241;
+  }
+  
+
+  /**/

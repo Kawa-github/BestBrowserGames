@@ -117,7 +117,7 @@ const RegisterPage = () => {
             value={formData.state}
             onChange={handleInputChange}
           >
-            <option selected>Selecione</option>
+            <option value="" disabled>Selecione</option>
             <option value="SP">São Paulo</option>
             <option value="MG">Minas Gerais</option>
             <option value="RJ">Rio de Janeiro</option>
@@ -132,7 +132,7 @@ const RegisterPage = () => {
             value={formData.country}
             onChange={handleInputChange}
           >
-            <option selected>Selecione</option>
+            <option value="" disabled>Selecione</option>
             <option value="BR">Brasil</option>
           </select>
 

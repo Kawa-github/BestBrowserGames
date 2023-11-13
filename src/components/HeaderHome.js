@@ -44,7 +44,11 @@ const HeaderHome = (props) =>{
                 </div>
 
                 <div className="container-user">
-                    <li id="username">{userName}</li>
+                    <li id="username">
+                        {/* <Link to={"/editUser"}> */}
+                            {userName}
+                        {/* </Link>     */}
+                    </li>
                     <li>
                         <Link to={"/"}>
                             <button

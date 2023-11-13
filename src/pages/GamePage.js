@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ApiUrl from "../axios/config";
 import HeaderHome from "../components/HeaderHome";
 import Category from "../components/Category";
@@ -37,7 +37,8 @@ const GamePage = () => {
 
         <div className="card-games">
           {games.map((game) => (
-            <div className="card" key={game.id}>
+            <div className="card">
+            <Link to={`/home/game/${game._id}`} key={game._id}>
               <div className="top-card">
                 <img src={game.imageURL} title={game.description} />
                 <p className="txt-card">{game.name}</p>
@@ -46,6 +47,7 @@ const GamePage = () => {
                 <h3>User</h3>
                 <h3>Estrelas: 5</h3>
               </div>
+            </Link>
             </div>
           ))}
         </div>

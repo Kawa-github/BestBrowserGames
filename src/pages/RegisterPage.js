@@ -6,7 +6,7 @@ import authServices from "../services/authServices"
 import Swal from "sweetalert2"
 
 const RegisterPage = () => {
-  const navigate = useNavigate()  
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({ 
       name: '', 
@@ -30,6 +30,15 @@ const RegisterPage = () => {
           text: "Preencha todos os campos!",
         });
         return;
+      }
+
+      if (formData.password !== formData.confirmPassword) {
+        Swal.fire({
+          icon: "error",
+          title: "Erro!",
+          text: "As senhas informadas não coincidem.",
+        })
+        return
       }
       
       try {
@@ -108,6 +117,7 @@ const RegisterPage = () => {
             value={formData.state}
             onChange={handleInputChange}
           >
+            <option selected>Selecione</option>
             <option value="SP">São Paulo</option>
             <option value="MG">Minas Gerais</option>
             <option value="RJ">Rio de Janeiro</option>
@@ -122,6 +132,7 @@ const RegisterPage = () => {
             value={formData.country}
             onChange={handleInputChange}
           >
+            <option selected>Selecione</option>
             <option value="BR">Brasil</option>
           </select>
 

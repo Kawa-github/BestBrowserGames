@@ -3,6 +3,8 @@ import { jwtDecode } from "jwt-decode";
 import HeaderHome from "../components/HeaderHome";
 import ApiUrl from "../axios/config";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 const CategoryPage = () => {
   const navigate = useNavigate()
@@ -21,13 +23,19 @@ const CategoryPage = () => {
     //   const decoded = jwtDecode(token)
       const headers = { Authorization: `Bearer ${user.token}` }
 
-      const response = await ApiUrl.post(
+      await ApiUrl.post(
         "/categories",
         { name: categoryName },
         { headers }
       )
 
-      console.log("Categoria cadastrada com sucesso:", response.data)
+      Swal.fire({
+        title: "Tudo certo!",
+        text: `Categoria cadastrada com sucesso.`,
+        icon: "success"
+      });
+
+      navigate("/home")
 
     } catch (error) {
       console.error("Erro ao cadastrar categoria:", error)

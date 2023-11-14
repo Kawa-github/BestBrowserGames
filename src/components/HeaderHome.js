@@ -3,8 +3,10 @@ import { useEffect, useState } from "react"
 import authServices from "../services/authServices"
 import PropTypes from "prop-types";
 
+
 const HeaderHome = (props) =>{
     const [userName, setUserName] = useState("")
+    const [search, setSearch] = useState("")
 
     useEffect(() => {
         const userData = authServices.getLoggedUser()
@@ -14,8 +16,14 @@ const HeaderHome = (props) =>{
         }
     }, [])
 
-    const HandleLogout = () =>{
+    const doLogout = () =>{
         localStorage.clear()
+    }
+
+    const handleSearch = () => {
+        if (props.onSearch) {
+          props.onSearch(search)
+        }
     }
     
     return(
@@ -44,6 +52,19 @@ const HeaderHome = (props) =>{
                 </div>
 
                 <div className="container-user">
+                {props.onSearch && (
+                    <li>
+                        <input
+                            type="text"
+                            placeholder="Buscar"
+                            value={search}
+                            onChange={(e) => {
+                            setSearch(e.target.value);
+                            handleSearch();
+                            }}
+                        />
+                    </li>
+                    )}
                     <li id="username">
                         {/* <Link to={"/editUser"}> */}
                             {userName}
@@ -53,7 +74,7 @@ const HeaderHome = (props) =>{
                         <Link to={"/"}>
                             <button
                                 className="btn-logout"
-                                onClick={(e) => HandleLogout(e.target)}
+                                onClick={(e) => doLogout(e.target)}
                             >
                                 Sair
                             </button>
@@ -67,6 +88,7 @@ const HeaderHome = (props) =>{
 
 HeaderHome.propTypes = {
     title: PropTypes.string.isRequired,
+    onSearch: PropTypes.func.isRequired,
 }
 
 

@@ -21,7 +21,7 @@ function App() {
                 <Route index element={<RegisterPage />}/>
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/home' element={<GamePage />} />
-                <Route path='/home/game/:id' element={<GameDetailsPage />} />
+                <Route path='/game/:id' element={<GameDetailsPage />} />
                 <Route path='/editUser' element={<EditUserPage />} />
                 <Route path='/category' element={<CategoryPage />} />
                 <Route path='/categories/:id' element={<CategoryDetailsPage  />} />

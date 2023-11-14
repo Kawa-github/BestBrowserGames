@@ -53,7 +53,7 @@
   }
   
   .btn-cadastro {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
     color: #fff;
     border: none;
     border-radius: 5px;

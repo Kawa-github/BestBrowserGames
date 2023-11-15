@@ -43,12 +43,8 @@ const RegisterPage = () => {
       
       try {
         const response = await authServices.insertData(formData)
-        console.log(formData)
-        console.log(response);
-        
-        const userData = response.data
-        const { name, email, token } = userData
-        localStorage.setItem('user', JSON.stringify({ name, email, token }))
+        console.log(response)
+        authServices.setRegisterUser(response)
         
         Swal.fire({
           icon: 'success',

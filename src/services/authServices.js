@@ -12,10 +12,23 @@ const updateUserData = (userId, data) => {
   return ApiUrl.put(`/users/${userId}`, data);
 }
 
-  const setLoggedUser = (response) => {
-    let userData = JSON.stringify(response.data)
-    localStorage.setItem("user", userData)
+const setRegisterUser = (response) => {
+  const { data } = response
+  const { message } = data 
+
+  if (message.trim() === "Membro registrado com sucesso!") {
+    const userData = JSON.parse(response.config.data)
+    const { name, email, token } = userData
+    localStorage.setItem('user', JSON.stringify({ name, email, token }))
+  } else {
+    console.error('Erro no registro do usuário. Mensagem do servidor:', message)
   }
+}
+
+const setLoggedUser = (response) => {
+  let userData = JSON.stringify(response.data)
+  localStorage.setItem("user", userData)
+}
 
 const getLoggedUser = () => {
   let userData = localStorage.getItem("user")
@@ -30,4 +43,4 @@ const getLoggedUser = () => {
   }
 }
 
-export default { insertData, fecthData, updateUserData, setLoggedUser, getLoggedUser }
+export default { insertData, fecthData, updateUserData, setRegisterUser, setLoggedUser, getLoggedUser }

@@ -43,12 +43,24 @@ const RegisterPage = () => {
       
       try {
         const response = await authServices.insertData(formData)
+        console.log(formData)
+        console.log(response);
+        
+        const userData = response.data
+        const { name, email, token } = userData
+        localStorage.setItem('user', JSON.stringify({ name, email, token }))
+        
+        Swal.fire({
+          icon: 'success',
+          title: `Usuário cadastrado com sucesso.`,
+          showConfirmButton: true,
+          timer: 3000
+        })
   
-        if (response.status === 201) {
-          console.log('Usuário registrado com sucesso')
-          authServices.setLoggedUser(response)
+        setTimeout(() => {
           navigate("/home")
-        } 
+        }, 1000)
+
       } catch (error) {
         console.error('Erro ao registrar o usuário', error)
       }

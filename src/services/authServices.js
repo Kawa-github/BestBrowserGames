@@ -12,10 +12,10 @@ const updateUserData = (userId, data) => {
   return ApiUrl.put(`/users/${userId}`, data);
 }
 
-const setLoggedUser = (response) => {
-  let userData = JSON.stringify(response.data)
-  localStorage.setItem("user", userData)
-}
+  const setLoggedUser = (response) => {
+    let userData = JSON.stringify(response.data)
+    localStorage.setItem("user", userData)
+  }
 
 const getLoggedUser = () => {
   let userData = localStorage.getItem("user")
